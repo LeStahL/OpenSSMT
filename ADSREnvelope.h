@@ -1,3 +1,21 @@
+/*    
+ *  OpenSSMT - OpenSSMT Software Synthesizer and Music Tracker. 
+ *  Copyright (C) 2016  Alexander Kraus <alexander.kraus@student.kit.edu>
+ *
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 #ifndef ADSRENVELOPE_H
 #define ADSRENVELOPE_H
 
@@ -6,17 +24,16 @@
 class ADSREnvelope 
 {
 public:
-    ADSREnvelope(QString name="Unnamed", float attack=1., float decay=1., float sustain=1., float release=1.0, float endtime = 2.);
+    ADSREnvelope(QString name="Unnamed", float attack=1., float decay=1., float sustain=1., float release=1.0);
     virtual ~ADSREnvelope();
     
-    float evaluate(float time);
+    float evaluate(float time, float endtime);
     
 private:
     float m_attack;
     float m_decay;
     float m_sustain;
     float m_release;
-    float m_end_time;
     QString m_name;
 };
 

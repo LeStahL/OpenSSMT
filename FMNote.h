@@ -16,41 +16,16 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "ADSREnvelope.h"
+#ifndef FMNOTE_H
+#define FMNOTE_H
 
-ADSREnvelope::ADSREnvelope(QString name, float attack, float decay, float sustain, float release, float endtime)
-    : m_name(name)
-    , m_attack(attack)
-    , m_decay(decay)
-    , m_sustain(sustain)
-    , m_release(release)
+class FMNote
 {
-    
-}
+public:
+    FMNote();
+        
+private:
+    float f1;
+};
 
-float ADSREnvelope::evaluate(float time, float endtime)
-{
-    if(time <=0) return 0;
-    else if(time <= m_attack)
-    {
-        return time/m_attack;
-    }
-    else if(time <= m_attack+m_decay)
-    {
-        return (time-m_attack)*(m_sustain-1.)/m_decay+1.;
-    }
-    else if(time <= endtime)
-    {
-        return m_sustain;
-    }
-    else if(time <= endtime+m_release)
-    {
-        return m_sustain-m_sustain/m_release*(time-endtime);
-    }
-    else return 0;
-}
-
-ADSREnvelope::~ADSREnvelope()
-{
-
-}
+#endif
