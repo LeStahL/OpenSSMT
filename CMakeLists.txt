@@ -29,6 +29,7 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(OPENSSMT_SOURCES
     OpenSSMT.cpp
     MainWindow.cpp
+    ADSREnvelope.cpp
 )
 
 if(CMAKE_BUILD_TOOL MATCHES "(msdev|devenv|nmake)")
