@@ -16,7 +16,31 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <stdio.h>
+#include <stdlib.h>
+
+#include <QApplication>
+#include <QTranslator>
+#include <QLocale>
+
+#include "MainWindow.h"
+
 int main(int argc, char **args)
 {
-    return 0;
+    printf("QFES  Copyright (C) 2016  Alexander Kraus\n\
+        This program comes with ABSOLUTELY NO WARRANTY; for details see `Help->About'.\n\
+        This is free software, and you are welcome to redistribute it\n\
+        under certain conditions; see `Help->About' for details.\n");
+    
+    QApplication *app = new QApplication(argc, args);
+    
+    QString locale = QLocale::system().name();
+    QTranslator trans;
+    trans.load(QString("triss_")+locale);
+    app->installTranslator(&trans);
+
+    MainWindow w(app);
+    w.show();
+
+    return app->exec();
 }
