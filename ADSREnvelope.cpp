@@ -28,6 +28,26 @@ ADSREnvelope::ADSREnvelope(QString name, float attack, float decay, float sustai
     
 }
 
+float ADSREnvelope::attack()
+{
+    return m_attack;
+}
+
+float ADSREnvelope::decay()
+{
+    return m_decay;
+}
+
+float ADSREnvelope::release()
+{
+    return m_release;
+}
+
+float ADSREnvelope::sustain()
+{
+    return m_sustain;
+}
+
 float ADSREnvelope::evaluate(float time, float endtime)
 {
     if(time <=0) return 0;

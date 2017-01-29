@@ -19,9 +19,12 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "ADSREnvelopePainter.h"
+
 #include <QMainWindow>
 #include <QApplication>
 
+class QShowEvent;
 namespace Ui { class MainWindow; }
 
 class MainWindow : public QMainWindow
@@ -32,9 +35,15 @@ public:
     MainWindow(QApplication *application = 0, Qt::WindowFlags flags = 0);
     virtual ~MainWindow();
     
+protected:
+    void resizeEvent(QResizeEvent *e);
+    void showEvent(QShowEvent *e);
+    
 private:
     QApplication *m_application;
     Ui::MainWindow *m_ui;
+    ADSREnvelopePainter *m_envelope_painter;
+    ADSREnvelope *m_edit_envelope;
 };
 
 #endif

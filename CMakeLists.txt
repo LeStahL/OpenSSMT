@@ -35,6 +35,7 @@ target_link_libraries(libopenssmt Qt5::Core)
 set(OPENSSMT_SOURCES
     OpenSSMT.cpp
     MainWindow.cpp
+    ADSREnvelopePainter.cpp
 )
 
 if(CMAKE_BUILD_TOOL MATCHES "(msdev|devenv|nmake)")

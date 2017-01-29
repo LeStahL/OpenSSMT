@@ -16,29 +16,34 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef ADSRENVELOPE_H
-#define ADSRENVELOPE_H
+#ifndef ADSRENVELOPEPAINTER_H
+#define ADSRENVELOPEPAINTER_H
 
-#include <QString>
+#include <QGraphicsItem>
+#include <QSize>
+#include <QPaintEvent>
+#include <QRectF>
+#include <QPainter>
+#include <QStyleOptionGraphicsItem>
+#include <QWidget>
+#include <QGraphicsScene>
+#include <QColor>
 
-class ADSREnvelope 
+class ADSREnvelope;
+
+class QResizeEvent;
+class ADSREnvelopePainter : public QGraphicsItem
 {
 public:
-    ADSREnvelope(QString name="Unnamed", float attack=1., float decay=1., float sustain=1., float release=1.0);
-    virtual ~ADSREnvelope();
-    
-    float evaluate(float time, float endtime);
-    float attack();
-    float decay();
-    float sustain();
-    float release();
-    
+    ADSREnvelopePainter(QGraphicsItem *parent = 0);
+    virtual ~ADSREnvelopePainter();
+    QRectF boundingRect() const;
+    void paint(QPainter *p, const QStyleOptionGraphicsItem *option, QWidget *widget);
+    void setEnvelope(ADSREnvelope *e);
+    ADSREnvelope *envelope();
+
 private:
-    float m_attack;
-    float m_decay;
-    float m_sustain;
-    float m_release;
-    QString m_name;
+    ADSREnvelope *m_envelope;
 };
 
 #endif
