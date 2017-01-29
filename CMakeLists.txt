@@ -26,10 +26,15 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
+set(LIBOPENSSMT_SOURCES
+    ADSREnvelope.cpp
+)
+add_library(libopenssmt ${LIBOPENSSMT_SOURCES})
+target_link_libraries(libopenssmt Qt5::Core)
+
 set(OPENSSMT_SOURCES
     OpenSSMT.cpp
     MainWindow.cpp
-    ADSREnvelope.cpp
 )
 
 if(CMAKE_BUILD_TOOL MATCHES "(msdev|devenv|nmake)")
@@ -38,4 +43,4 @@ else()
     add_definitions(-Wall)
 endif()
 add_executable(openssmt ${OPENSSMT_SOURCES})
-target_link_libraries(openssmt Qt5::Widgets Qt5::Gui Qt5::Core)
+target_link_libraries(openssmt Qt5::Widgets Qt5::Gui Qt5::Core libopenssmt)

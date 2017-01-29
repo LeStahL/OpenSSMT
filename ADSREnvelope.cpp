@@ -18,7 +18,7 @@
 
 #include "ADSREnvelope.h"
 
-ADSREnvelope::ADSREnvelope(QString name, float attack, float decay, float sustain, float release, float endtime)
+ADSREnvelope::ADSREnvelope(QString name, float attack, float decay, float sustain, float release)
     : m_name(name)
     , m_attack(attack)
     , m_decay(decay)
